@@ -21,8 +21,8 @@ const getAllPOst = async (req, res) => {
 
 // post new image
 const addNewPost = (req, res) => {
-  const { name } = req.files.photos;
   try {
+    const { name } = req.files.photos;
     const file = req.files.photos;
     cloudinary.uploader.upload(file.tempFilePath, async (err, result) => {
       const newPost = new imageModel({
@@ -35,6 +35,7 @@ const addNewPost = (req, res) => {
       return res.status(200).json(getAllposts);
     });
   } catch (error) {
+    console.log(error);
     return res.status(400).json("Something went wrong");
   }
 };

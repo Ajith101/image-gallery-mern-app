@@ -8,6 +8,7 @@ const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
 
 const app = express();
+const PORT = process.env.PORT || 3020;
 
 app.use(express.json());
 app.use(cors());
@@ -26,7 +27,7 @@ mongoose
   })
   .then(
     app.listen(process.env.PORT, () => {
-      console.log(`connected mongo db with ${process.env.PORT}`);
+      console.log(`connected mongo db with ${PORT}`);
     })
   )
   .catch((err) => {
